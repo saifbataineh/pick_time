@@ -4,6 +4,7 @@ import 'package:pick_time/core/widgets/custom_button.dart';
 import 'package:pick_time/core/widgets/custom_spacer.dart';
 import 'package:pick_time/core/widgets/custom_text_field.dart';
 import 'package:pick_time/features/auth/controllers/auth_cubit.dart';
+import 'package:pick_time/features/home_navigation/tab_bar.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -115,9 +116,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: width,
                     onPressed: () {
                       context.read<AuthCubit>().login(
-                            phoneCtrl.text,
-                            passCtrl.text,
-                          );
+                        phoneCtrl.text,
+                        passCtrl.text,
+                      );
+                      //TODO: ADD BLOC LISTENER
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const MyBottomTabBarApp(),
+                        ),
+                      );
                     },
                   ),
                   const CustomSpacer(height: 10),
